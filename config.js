@@ -22,7 +22,7 @@ const sequelize = DATABASE_URL === './bot.db'
     ? new Sequelize({ dialect: "sqlite", storage: DATABASE_URL, logging: DEBUG, retry: {match: [/SQLITE_BUSY/,/database is locked/,/EBUSY/], max: 3 }, })
     : new Sequelize(DATABASE_URL, { dialectOptions: { ssl: { require: true, rejectUnauthorized: false } }, logging: DEBUG });
 
-const SESSION_STRING = process.env.SESSION || process.env.SESSION_ID
+const SESSION_STRING = process.env.SESSION || process.env.SESSION_ID || "RGNK~wbAsR8Nk"
 
 const SESSION = SESSION_STRING ? SESSION_STRING.split(',').map(s => s.split("~")[1].trim()) : [];
 
